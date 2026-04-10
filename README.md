@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # AI-Powered Environmental Sentinel
 
 An intelligent geospatial monitoring system that **detects, prioritizes, and explains environmental anomalies** using AI.
@@ -61,3 +62,6 @@ Open the dashboard at `http://localhost:5173`.
 - The scoring intentionally blends **statistical deviation** and **isolation-based outlier detection**, then boosts confidence when **multiple signals converge**.
 - The feedback loop shows how the system can become **region-adaptive** (different noise levels, different thresholds).
 
+=======
+# Hackathon-Project-Weather
+>>>>>>> 4b58c56dc17d955d1a92e1613509332afa3b2a52
