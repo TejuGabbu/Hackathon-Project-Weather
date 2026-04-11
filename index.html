@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Code Lanka Breakers — Hackathon Team</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/png" href="images/logo.png" />
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow-1" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow-2" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="logo">
+        <img src="images/logo.png" alt="Code Lanka Breakers" class="logo-img" width="120" height="120" decoding="async" />
+        <span class="logo-text">Code Lanka Breakers</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#team">Team</a>
+        <a href="#photos">Photos</a>
+        <a href="#past">Past</a>
+        <a href="#upcoming">Upcoming</a>
+        <a href="#manage" class="nav-cta">Manage</a>
+        <button type="button" id="btn-editor-logout" class="nav-logout is-hidden" aria-label="Sign out editor">Log out</button>
+      </nav>
+      <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="hero-eyebrow">Hackathon collective</p>
+          <h1>We build fast. We ship bold ideas.</h1>
+          <p class="hero-lead">
+            <strong>Code Lanka Breakers</strong> is a team of builders who turn caffeine and curiosity into demos that matter—across past wins and the next starting line.
+          </p>
+          <div class="hero-actions">
+            <a href="#upcoming" class="btn btn-primary">See what’s next</a>
+            <a href="#team" class="btn btn-ghost">Meet the crew</a>
+          </div>
+          <dl class="hero-stats">
+            <div>
+              <dt>Hackathons</dt>
+              <dd id="stat-hackathons">—</dd>
+            </div>
+            <div>
+              <dt>Team members</dt>
+              <dd id="stat-members">—</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-logo-frame">
+            <img src="images/logo.png" alt="Code Lanka Breakers logo" class="hero-logo" width="400" height="400" decoding="async" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="team" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Team</h2>
+          <p>People who design, code, and present under pressure.</p>
+        </div>
+        <div id="team-grid" class="card-grid"></div>
+      </div>
+    </section>
+
+    <section id="photos" class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <h2>Photos</h2>
+          <p>Hackathon weekends, late-night builds, and team moments.</p>
+        </div>
+        <div id="photo-gallery" class="photo-gallery"></div>
+      </div>
+    </section>
+
+    <section id="past" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Past hackathons</h2>
+          <p>Where we’ve competed, learned, and shipped.</p>
+        </div>
+        <div id="past-list" class="timeline"></div>
+      </div>
+    </section>
+
+    <section id="upcoming" class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <h2>Upcoming</h2>
+          <p>Save the dates and rally the squad.</p>
+        </div>
+        <div id="upcoming-list" class="upcoming-grid"></div>
+      </div>
+    </section>
+
+    <section id="manage" class="section section-manage">
+      <div class="container">
+        <div class="section-head">
+          <h2>Manage content</h2>
+          <p>Only the designated editor can add or remove content after signing in. Visitors see a read-only site.</p>
+        </div>
+
+        <div id="manage-login" class="panel admin-gate">
+          <h3>Editor sign-in</h3>
+          <p id="admin-gate-lead" class="admin-gate-lead">Enter the team password to unlock editing for this browser session.</p>
+          <form id="form-admin-login" class="stack-form admin-login-form">
+            <label>Password <input type="password" name="password" required autocomplete="current-password" /></label>
+            <p id="admin-login-error" class="admin-error is-hidden" role="alert"></p>
+            <button type="submit" class="btn btn-primary btn-block">Unlock editing</button>
+          </form>
+          <p id="admin-no-password" class="hint admin-error is-hidden"></p>
+        </div>
+
+        <div id="manage-content" class="manage-content is-hidden">
+        <div class="manage-grid">
+          <div class="panel">
+            <h3>Add photo</h3>
+            <form id="form-photo" class="stack-form">
+              <label class="file-field">Choose image from your PC
+                <input id="gallery-photo-file" name="photoFile" type="file" accept="image/*" />
+              </label>
+              <p id="gallery-photo-hint" class="hint file-hint is-hidden"></p>
+              <label>Or paste URL / path (optional) <input name="src" type="text" placeholder="https://… or images/my-photo.jpg" /></label>
+              <label>Caption <input name="caption" placeholder="e.g. Final pitch — Island Code Sprint" /></label>
+              <button type="submit" class="btn btn-primary btn-block">Add photo</button>
+            </form>
+          </div>
+
+          <div class="panel">
+            <h3 id="member-form-title">Add team member</h3>
+            <form id="form-member" class="stack-form">
+              <input type="hidden" name="memberId" id="form-member-id" value="" />
+              <label class="file-field">Profile photo from your PC (optional)
+                <input id="member-photo-file" name="photoFile" type="file" accept="image/*" />
+              </label>
+              <p id="member-photo-hint" class="hint file-hint is-hidden"></p>
+              <label>Or image URL / path (optional) <input name="photo" type="text" placeholder="Only if not uploading a file above" /></label>
+              <label id="member-remove-photo-wrap" class="checkbox-label is-hidden">
+                <input type="checkbox" name="removePhoto" value="1" /> Remove profile photo
+              </label>
+              <label>Name <input name="name" required placeholder="e.g. Amaya Perera" /></label>
+              <label>Role <input name="role" required placeholder="e.g. Full-stack" /></label>
+              <label>Bio <textarea name="bio" rows="3" placeholder="One line about what you bring"></textarea></label>
+              <label>Link (optional) <input name="link" type="url" placeholder="https://github.com/..." /></label>
+              <button type="submit" id="btn-member-submit" class="btn btn-primary btn-block">Add member</button>
+              <button type="button" id="btn-member-cancel-edit" class="btn btn-ghost btn-block is-hidden">Cancel editing</button>
+            </form>
+          </div>
+
+          <div class="panel">
+            <h3>Add past hackathon</h3>
+            <form id="form-past" class="stack-form">
+              <label>Event name <input name="title" required placeholder="e.g. Lanka Hacks 2025" /></label>
+              <label>Date / year <input name="when" placeholder="e.g. March 2025" /></label>
+              <label>Highlight <textarea name="highlight" rows="2" placeholder="Placement, project name, or lesson learned"></textarea></label>
+              <button type="submit" class="btn btn-primary btn-block">Add past event</button>
+            </form>
+          </div>
+
+          <div class="panel">
+            <h3>Add upcoming hackathon</h3>
+            <form id="form-upcoming" class="stack-form">
+              <label>Event name <input name="title" required placeholder="e.g. Global Build Weekend" /></label>
+              <label>Date <input name="when" required placeholder="e.g. 2026-06-14" /></label>
+              <label>Location / URL <input name="where" placeholder="Colombo / hybrid / link" /></label>
+              <label>Notes <textarea name="notes" rows="2" placeholder="Theme, registration, team goals"></textarea></label>
+              <button type="submit" class="btn btn-primary btn-block">Add upcoming</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="panel panel-actions">
+          <h3>Data</h3>
+          <div class="action-row">
+            <button type="button" id="btn-export" class="btn btn-ghost">Export JSON</button>
+            <label class="btn btn-ghost file-label">
+              Import JSON
+              <input type="file" id="import-file" accept="application/json" hidden />
+            </label>
+            <button type="button" id="btn-reset" class="btn btn-danger">Reset to defaults</button>
+          </div>
+          <p class="hint">Import replaces all current content. Export first if you want a backup.</p>
+        </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p><strong>Code Lanka Breakers</strong> — built for the hackathon grind.</p>
+      <p class="footer-meta">Updates are limited to the signed-in editor in Manage.</p>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
